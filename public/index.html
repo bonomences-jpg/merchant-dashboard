@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INACASH</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>PT Inacash Lentera Teknologi</h1>
+
+<div class="summary">
+
+    <div class="summary-card">
+        <span>Total</span>
+        <h2 id="totalMerchant">0</h2>
+    </div>
+
+    <div class="summary-card dmi">
+        <span>DMI</span>
+        <h2 id="totalDMI">0</h2>
+    </div>
+
+    <div class="summary-card kmi">
+        <span>KMI</span>
+        <h2 id="totalKMI">0</h2>
+    </div>
+
+    <div class="summary-card kalabiru">
+        <span>KALABIRU</span>
+        <h2 id="totalKALABIRU">0</h2>
+    </div>
+
+</div>
+
+        <div class="toolbar">
+
+            <div class="filter">
+
+                <button class="active" data-filter="Semua">Semua</button>
+
+                <button data-filter="DMI">DMI</button>
+
+                <button data-filter="KMI">KMI</button>
+
+                <button data-filter="KALABIRU">KALABIRU</button>
+
+            </div>
+
+            <button class="add-btn">
+
+                ➕ Add Merchant
+
+            </button>
+
+        </div>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                id="search"
+                placeholder="🔍 Search Merchant...">
+
+        </div>
+
+        <div class="merchant-list"></div>
+
+    </div>
+
+    <!-- ================= ADD MODAL ================= -->
+
+    <div class="modal" id="addModal">
+
+        <div class="modal-box">
+
+            <h2>Add Merchant</h2>
+
+            <label>Merchant</label>
+
+			<textarea
+    			id="merchantNames"
+    			rows="10"
+    			placeholder="Satu baris = satu merchant
+			"></textarea>
+
+            <select id="merchantBrand">
+
+                <option>DMI</option>
+
+                <option>KMI</option>
+
+                <option>KALABIRU</option>
+
+            </select>
+
+            <div class="modal-action">
+
+                <button class="cancel">
+
+                    Cancel
+
+                </button>
+
+                <button class="save">
+
+                    Save
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ================= DELETE MODAL ================= -->
+
+    <div class="modal" id="deleteModal">
+
+        <div class="delete-box">
+
+            <h2>Delete Merchant</h2>
+
+            <p>
+
+                Yakin ingin menghapus merchant ini?
+
+            </p>
+
+            <h3 id="deleteName"></h3>
+
+            <div class="delete-action">
+
+                <button id="cancelDelete">
+
+                    Cancel
+
+                </button>
+
+                <button id="confirmDelete">
+
+                    Delete
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+
+</html>
