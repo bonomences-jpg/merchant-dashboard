@@ -610,11 +610,12 @@ select,
 }
 
 .subtitle {
-    margin-top: 8px;
+    display: block;
+    width: 100%;
+    margin: 10px auto 25px;
     text-align: center;
-    font-size: 14px;
-    color: #ffffff;
-    opacity: 0.75;
-    font-weight: 400;
-    letter-spacing: 0.5px;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    opacity: 2;
 }
