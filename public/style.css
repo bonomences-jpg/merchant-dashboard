@@ -12,8 +12,6 @@ body{
     overflow-x:hidden;
 }
 
-/* Background */
-
 body::before{
     content:"";
     position:fixed;
@@ -36,15 +34,11 @@ body::after{
     z-index:-1;
 }
 
-/* Container */
-
 .container{
     width:95%;
     max-width:1100px;
     margin:40px auto;
 }
-
-/* Title */
 
 h1{
     font-family:'Orbitron',sans-serif;
@@ -58,8 +52,6 @@ h1{
     0 0 25px #00f7ff;
 }
 
-/* Toolbar */
-
 .toolbar{
     display:flex;
     justify-content:space-between;
@@ -68,8 +60,6 @@ h1{
     gap:15px;
     margin-bottom:25px;
 }
-
-/* Filter */
 
 .filter{
     display:flex;
@@ -99,8 +89,6 @@ h1{
     box-shadow:0 0 20px #00f7ff;
 }
 
-/* Add Button */
-
 .add-btn{
     border:none;
     background:#00f7ff;
@@ -116,8 +104,6 @@ h1{
     transform:translateY(-2px);
     box-shadow:0 0 20px #00f7ff;
 }
-
-/* Search */
 
 .search-box{
     margin-bottom:30px;
@@ -139,15 +125,11 @@ h1{
     box-shadow:0 0 18px #00f7ff66;
 }
 
-/* Merchant Grid */
-
 .merchant-list{
     display:flex;
     flex-direction:column;
     gap:12px;
 }
-
-/* Card */
 
 .card{
     display:flex;
@@ -175,8 +157,6 @@ h1{
     font-size:18px;
     font-weight:600;
 }
-
-/* Badge */
 
 .badge{
     display:inline-flex;
@@ -211,8 +191,6 @@ h1{
     background:#ff00ff22;
     color:#ff57ff;
 }
-
-/* Menu */
 
 .menu{
     position:relative;
@@ -268,10 +246,6 @@ h1{
 .dropdown button:hover{
     background:#ff4040;
 }
-
-/* =========================
-   MODAL
-========================= */
 
 .modal{
     position:fixed;
@@ -372,10 +346,6 @@ h1{
 
 }
 
-/* =========================
-   BUTTON
-========================= */
-
 .modal-action,
 .delete-action{
     display:flex;
@@ -425,10 +395,6 @@ h1{
     box-shadow:0 0 18px rgba(255,0,0,.4);
 }
 
-/* =========================
-   DELETE TEXT
-========================= */
-
 .delete-box p{
     color:#c7c7c7;
     margin-bottom:12px;
@@ -439,10 +405,6 @@ h1{
     word-break:break-word;
     margin-bottom:10px;
 }
-
-/* =========================
-   SCROLLBAR
-========================= */
 
 ::-webkit-scrollbar{
     width:10px;
@@ -460,10 +422,6 @@ h1{
 ::-webkit-scrollbar-thumb:hover{
     background:#00f7ff;
 }
-
-/* =========================
-   ANIMATION
-========================= */
 
 @keyframes popup{
 
@@ -490,10 +448,6 @@ h1{
     }
 
 }
-
-/* =========================
-   RESPONSIVE
-========================= */
 
 @media(max-width:768px){
 
@@ -533,36 +487,20 @@ h1{
 
 }
 
-/* =========================
-   GLASS EFFECT
-========================= */
-
 .card,
 .modal-box,
 .delete-box{
     backdrop-filter:blur(12px);
 }
 
-/* =========================
-   SELECTION
-========================= */
-
 ::selection{
     background:#00f7ff;
     color:#000;
 }
 
-/* =========================
-   INPUT PLACEHOLDER
-========================= */
-
 input::placeholder{
     color:#8b97aa;
 }
-
-/* =========================
-   SMOOTH
-========================= */
 
 button,
 input,
@@ -669,4 +607,14 @@ select,
     font-weight:600;
 
     color:#fff;
+}
+
+.subtitle {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 14px;
+    color: #ffffff;
+    opacity: 0.75;
+    font-weight: 400;
+    letter-spacing: 0.5px;
 }
