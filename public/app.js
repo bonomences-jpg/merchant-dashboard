@@ -285,10 +285,8 @@ cancelDelete.addEventListener("click", () => {
 
 confirmDelete.addEventListener("click", async () => {
 
-    // Tutup modal langsung
     deleteModal.classList.remove("show");
 
-    // Disable tombol agar tidak bisa diklik dua kali
     confirmDelete.disabled = true;
 
     try {
