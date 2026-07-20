@@ -7,7 +7,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Merchant</title>
+    <title>INACASH</title>
 
     <link rel="stylesheet" href="style.css">
 
@@ -19,8 +19,8 @@
 
     <div class="container">
 
-        <h1>PT Inacash Lentera Teknologi</h1>
-		<p class="subtitle">
+<h1 class="title">PT Inacash Lentera Teknologi</h1>
+<p class="subtitle">
     Update jika ada pergantian merchant
 </p>
 
@@ -28,58 +28,61 @@
 
     <div class="summary-card">
         <span>Total</span>
-        <h2 id="totalMerchant">0</h2>
+        <h2 id="totalMerchant">...</h2>
     </div>
 
     <div class="summary-card dmi">
         <span>DMI</span>
-        <h2 id="totalDMI">0</h2>
+        <h2 id="totalDMI">...</h2>
     </div>
 
     <div class="summary-card kmi">
         <span>KMI</span>
-        <h2 id="totalKMI">0</h2>
+        <h2 id="totalKMI">...</h2>
     </div>
 
     <div class="summary-card kalabiru">
         <span>KALABIRU</span>
-        <h2 id="totalKALABIRU">0</h2>
+        <h2 id="totalKALABIRU">...</h2>
     </div>
 
 </div>
 
-        <div class="toolbar">
+       <div class="toolbar">
 
-            <div class="filter">
+    <div class="filter">
 
-                <button class="active" data-filter="Semua">Semua</button>
+        <button class="active" data-filter="Semua">Semua</button>
+        <button data-filter="DMI">DMI</button>
+        <button data-filter="KMI">KMI</button>
+        <button data-filter="KALABIRU">KALABIRU</button>
 
-                <button data-filter="DMI">DMI</button>
+    </div>
 
-                <button data-filter="KMI">KMI</button>
+    <div class="action-buttons">
 
-                <button data-filter="KALABIRU">KALABIRU</button>
+        <button class="delete-all-btn" onclick="openBulkDeleteModal()">
+            🗑 Bulk Delete
+        </button>
 
-            </div>
+        <button class="add-btn" onclick="openAddModal()">
+            ➕ Add Merchant
+        </button>
 
-            <button class="add-btn">
+    </div>
 
-                ➕ Add Merchant
+</div>
 
-            </button>
+<div class="search-box">
 
-        </div>
+    <input
+        type="text"
+        id="search"
+        placeholder="🔍 Search Merchant...">
 
-        <div class="search-box">
+</div>
 
-            <input
-                type="text"
-                id="search"
-                placeholder="🔍 Search Merchant...">
-
-        </div>
-
-        <div class="merchant-list"></div>
+<div class="merchant-list"></div>
 
     </div>
 
@@ -127,7 +130,7 @@
 
     </div>
 
-    <div class="modal" id="deleteModal">
+    <div class="modal" id="deleteMerchantModal">
 
         <div class="delete-box">
 
@@ -160,6 +163,45 @@
         </div>
 
     </div>
+
+    <div class="modal" id="bulkDeleteModal">
+
+    <div class="modal-box">
+
+        <h2>Bulk Delete</h2>
+
+        <label>Pilih Brand</label>
+
+        <select id="deleteBrand">
+
+            <option value="DMI">DMI</option>
+
+            <option value="KMI">KMI</option>
+
+            <option value="KALABIRU">KALABIRU</option>
+
+        </select>
+
+        <p class="delete-warning">
+            Semua merchant dari brand yang dipilih akan dihapus.
+            Tindakan ini tidak dapat dibatalkan.
+        </p>
+
+        <div class="modal-action">
+
+            <button class="cancel" onclick="closeBulkDeleteModal()">
+                Cancel
+            </button>
+
+            <button class="delete-confirm" id="confirmBulkDelete">
+                Delete All
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
 
     <script src="app.js"></script>
 

@@ -64,7 +64,42 @@ router.post("/", async (req, res) => {
 
 });
 
-// Hapus merchant
+router.post("/bulk-delete", async (req, res) => {
+
+    try {
+
+        const { brand } = req.body;
+
+        if (!brand) {
+            return res.status(400).json({
+                success: false,
+                message: "Brand wajib dipilih"
+            });
+        }
+
+        await pool.query(
+            "DELETE FROM merchants WHERE brand = $1",
+            [brand]
+        );
+
+        res.json({
+            success: true,
+            message: `Semua merchant ${brand} berhasil dihapus`
+        });
+
+    } catch (err) {
+
+        console.error(err);
+
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+
+    }
+
+});
+
 router.delete("/:id", async (req, res) => {
 
     try {

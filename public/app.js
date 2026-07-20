@@ -7,7 +7,8 @@ const searchInput = document.getElementById("search");
 const filterButtons = document.querySelectorAll(".filter button");
 
 const addModal = document.getElementById("addModal");
-const deleteModal = document.getElementById("deleteModal");
+const deleteMerchantModal = document.getElementById("deleteMerchantModal");
+const bulkDeleteModal = document.getElementById("bulkDeleteModal");
 
 const addButton = document.querySelector(".add-btn");
 const cancelButton = document.querySelector(".cancel");
@@ -20,6 +21,7 @@ const deleteName = document.getElementById("deleteName");
 
 const cancelDelete = document.getElementById("cancelDelete");
 const confirmDelete = document.getElementById("confirmDelete");
+const confirmBulkDelete = document.getElementById("confirmBulkDelete");
 
 let currentFilter = "Semua";
 let currentKeyword = "";
@@ -47,7 +49,7 @@ function renderMerchant() {
 
         merchantList.innerHTML = `
             <div class="card">
-                <h2>Tidak ada merchant.</h2>
+                <h2>Sedang Memuat...</h2>
             </div>
         `;
 
@@ -263,7 +265,9 @@ function setupDelete() {
 
             deleteName.innerText = merchant.name;
 
-            deleteModal.classList.add("show");
+            deleteMerchantModal.classList.add("show");
+
+            bulkDeleteModal.classList.remove("show");
 
             document.querySelectorAll(".dropdown").forEach(drop => {
 
@@ -279,14 +283,16 @@ function setupDelete() {
 
 cancelDelete.addEventListener("click", () => {
 
-    deleteModal.classList.remove("show");
+    deleteMerchantModal.classList.remove("show");
 
 });
 
 confirmDelete.addEventListener("click", async () => {
 
-    deleteModal.classList.remove("show");
+    // Tutup modal langsung
+    deleteMerchantModal.classList.remove("show");
 
+    // Disable tombol agar tidak bisa diklik dua kali
     confirmDelete.disabled = true;
 
     try {
@@ -313,6 +319,42 @@ confirmDelete.addEventListener("click", async () => {
 
 });
 
+confirmBulkDelete.addEventListener("click", async () => {
+
+    const brand = document.getElementById("deleteBrand").value;
+
+    bulkDeleteModal.classList.remove("show");
+
+    try {
+
+        const response = await fetch("/api/merchants/bulk-delete", {
+
+            method: "POST",
+
+            headers: {
+                "Content-Type": "application/json"
+            },
+
+            body: JSON.stringify({
+                brand: brand
+            })
+
+        });
+
+        const result = await response.json();
+
+        console.log(result);
+
+        await loadMerchants();
+
+    } catch (err) {
+
+        console.error(err);
+
+    }
+
+});
+
 window.addEventListener("click", (e) => {
 
     if (e.target === addModal) {
@@ -321,11 +363,17 @@ window.addEventListener("click", (e) => {
 
     }
 
-    if (e.target === deleteModal) {
+    if (e.target === deleteMerchantModal) {
 
-        deleteModal.classList.remove("show");
+        deleteMerchantModal.classList.remove("show");
 
     }
+
+    if (e.target === bulkDeleteModal) {
+
+    bulkDeleteModal.classList.remove("show");
+
+}
 
 });
 
@@ -335,7 +383,7 @@ window.addEventListener("keydown", (e) => {
 
         addModal.classList.remove("show");
 
-        deleteModal.classList.remove("show");
+        deleteMerchantModal.classList.remove("show");
 
         document.querySelectorAll(".dropdown").forEach(drop => {
 
@@ -371,14 +419,20 @@ async function loadMerchants() {
 
     merchants = result.data;
 
-    console.log(merchants);
-
     summary = result.summary;
 
     renderMerchant();
 
     updateSummary();
 
+}
+
+function openBulkDeleteModal() {
+    bulkDeleteModal.classList.add("show");
+}
+
+function closeBulkDeleteModal() {
+    bulkDeleteModal.classList.remove("show");
 }
 
 loadMerchants();

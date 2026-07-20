@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const merchantRoute = require("./routes/merchant");
 const pool = require("./db/database");
 const express = require("express");
@@ -10,7 +12,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/merchants", merchantRoute);
 
-// Folder frontend
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/api/health", (req, res) => {
@@ -23,7 +24,7 @@ app.get("/api/health", (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-    console.log(`Server running : http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
 
 app.get("/api/test-db", async (req, res) => {
